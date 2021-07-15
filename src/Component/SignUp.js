@@ -14,22 +14,22 @@ export default function SignUp() {
                     <h1>Sign Up</h1>
                     <p>Already have an account? Sign in</p>
                     <Form>
-                        <Form.Group controlId="formGroupFirstName">
+                        <Form.Group className="form-group" controlId="formGroupFirstName" >
                             <Form.Control type="text" placeholder="First name" />
                         </Form.Group>
-                        <Form.Group controlId="formGroupLastName">
+                        <Form.Group className="form-group" controlId="formGroupLastName">
                             <Form.Control type="text" placeholder="Last name" />
                         </Form.Group>
-                        <Form.Group controlId="formGroupPhoneNumber">   
+                        <Form.Group className="form-group" controlId="formGroupPhoneNumber">   
                             <Form.Control type="text" placeholder="Phone number" />
                         </Form.Group>
-                        <Form.Group controlId="formGroupEmail">
+                        <Form.Group className="form-group" controlId="formGroupEmail">
                             <Form.Control type="email" placeholder="Enter email" />
                         </Form.Group>
-                        <Form.Group controlId="formGroupPassword">   
+                        <Form.Group className="form-group" controlId="formGroupPassword">   
                             <Form.Control type="password" placeholder="Password" />
                         </Form.Group>
-                        <button className="button" type="submit"></button>
+                        <button className="button" type="submit">Next step</button>
                     </Form>
                 </div>
             </div>
