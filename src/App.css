@@ -30,7 +30,7 @@
     justify-content: space-between;
     align-items: center;
     color: #fff;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #2f2f2f;
     margin-bottom: 50px;
 }
 
@@ -280,5 +280,15 @@
     width: 174px;
     height: 237px;
     border-radius: 15px;
+    background: linear-gradient(209.09deg, #191919 -1.68%, #212121 135.36%);
+    position: relative;
+}
+
+.cardNaqishLG{
+    color: #fff;
+    position: absolute;
+    top: 400px;
+    left: -2px;
+    z-index: 3;
 }
 

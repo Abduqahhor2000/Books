@@ -5,6 +5,7 @@ import starBG from "../img/starBG.svg";
 import starDot from "../img/starDot.svg";
 import ornament from "../img/ornament.svg";
 import {BiSearchAlt} from "react-icons/bi";
+import Katalog from "./Katalog";
 
 function Home() {
   return (
@@ -61,16 +62,7 @@ function Home() {
                   <li>Sovet davri </li>
                   <li>Mustaqillik davri </li>
                 </ul>
-                <div className="katalog">
-                  <div className="katalog-item">
-                    <div className="item-img">
-                        <img  alt="dfbkj sjhdf" />
-                    </div>
-                    <div className="item-text">
-                     
-                    </div>
-                  </div>
-                </div>
+               <Katalog />
             </div>
         </div>
           <img className="ornament" src={ornament} alt="jnknjk"></img>
