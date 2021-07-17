@@ -6,6 +6,16 @@
     width: 100%;
     background-color: #191919;
     min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.ornament{
+    color: #fff;
+    position: absolute;
+    top: 300px;
+    right: -2px;
+    z-index: 0;
 }
 
 .container-home{
@@ -24,14 +34,15 @@
     margin-bottom: 50px;
 }
 
-.brend-home{
-    font-size: 2.5rem;
+.brand-home{
     margin: 0;
     padding: 0;
 }
 
-.brend-home h1{
-     margin: 0;
+.brand-home h1{
+    font-size: 25px;
+    color: #C9AC8C;
+    margin: 0;
 }
 
 .nav-home{
@@ -80,6 +91,10 @@
     border-radius: 50%;
 }
 
+.banner-home{
+    position: relative;
+    margin-bottom: 140px;
+}
 .banner-img{
     position: relative;
     width: 1260px;
@@ -107,9 +122,10 @@
     z-index: 2;
 }
 
-.banner-img div{
+.banner-img .div1{
     width: 300px;
-    font-size: 50px;
+    font-size: 62px;
+    line-height: 62px;
     text-transform: uppercase;
     color: #C9AC8C;
     position: absolute;
@@ -118,8 +134,22 @@
     z-index: 3;
 }
 
+.slider-button{
+    position: absolute;
+    top: 255px;
+    left: 85px;
+    z-index: 3;
+    display: flex;
+}
+
+.slider-button span{
+    height: 3px;
+    width: 50px;
+    background-color: rgba(255, 255, 255, 1);
+    margin-right: 10px;
+}
+
 .starBG{
-    font-size: 80px;
     color: #fff;
     position: absolute;
     top: 90px;
@@ -128,10 +158,127 @@
 }
 
 .starBG1{
-    font-size: 80px;
     color: #fff;
     position: absolute;
     top: -185px;
     left: 390px;
     z-index: 3;
 }
+
+.starBG2{
+    color: #fff;
+    position: absolute;
+    top: 125px;
+    left: 570px;
+    z-index: 3;
+}
+
+.starDot{
+        color: #fff;
+    position: absolute;
+    top: 230px;
+    left: 628px;
+    z-index: 3;
+}
+
+.starDot1{
+    color: #fff;
+    position: absolute;
+    top: 195px;
+    left: -2px;
+    z-index: 3;
+}
+
+.starDot2{
+    color: #fff;
+    position: absolute;
+    top: -54px;
+    left: 445px;
+    z-index: 3;
+    transform: rotate(135deg);
+}
+
+.search-div{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1100px;
+    height: 170px;
+    background-color: #191919;
+    top: 295px;
+    left: 110px;
+    border-radius: 15px;
+    z-index: 3;
+}
+
+.search-div input{
+   width: 710px;
+   height: 47px;
+   background-color: #404040;
+   border: 0px;
+   border-radius: 15px;
+   color: rgba(255, 255, 255, 0.3);
+   font-size: 14px;
+   padding-left: 27px;
+   margin-right: 10px;
+}
+
+.search-div h2{
+   size: 31px;
+   text-align: center;
+   text-transform: uppercase;
+   color:#C9AC8C;
+   display: block;
+}
+
+.search-div form button{
+   width: 160px;
+   height: 47px;
+   background-color: #C9AC8C;
+   color: #3C2710;
+   border-radius: 15px;
+} 
+
+.main-home{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-home h2{
+    color: #C9AC8C;
+    size: 31px;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.main-home ul{
+    display: flex;
+    list-style-type: none;
+    padding: 0px;
+    text-align: center;
+}
+
+.main-home li{
+    margin-right: 70px;
+    padding: 0px;
+    color: rgba(255, 255, 255, 1);
+    z-index: 3;
+}
+
+.katalog{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.katalog-item{
+    width: 174px;
+    height: 237px;
+    border-radius: 15px;
+}
+
