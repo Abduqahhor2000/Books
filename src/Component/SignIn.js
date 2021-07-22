@@ -21,7 +21,7 @@ export default function SignIn() {
     const onClickForm = async (e) => {
         e.preventDefault();
         try {
-            const { data } = await Axios.get('/login', state);
+            const { data } = await Axios.post('/login', state);
             if (!data.success) {
               return console.log(data.msg);
             }

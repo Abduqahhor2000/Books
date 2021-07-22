@@ -22,8 +22,8 @@ const defaultUser = {
 }
 
 function App() {
-const [authDetails, setAuthDetails] = useState(initailState);
-const token = authDetails.token;
+  const [authDetails, setAuthDetails] = useState(initailState);
+  const token = authDetails.token;
 
 
   if(token){
