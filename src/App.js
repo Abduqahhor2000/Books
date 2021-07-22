@@ -4,11 +4,10 @@ import Main from "./Component/Main";
 import ornament from "./img/ornament.svg";
 import SignIn from "./Component/SignIn";
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AuthContext from "./contexts/AuthContext";
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import SignUp from "./Component/SignUp";
-
 
 const initailState = {
   token: null,
@@ -24,6 +23,10 @@ const defaultUser = {
 function App() {
   const [authDetails, setAuthDetails] = useState(initailState);
   const token = authDetails.token;
+
+  useEffect(()=>{
+    
+  }, []);
 
 
   if(token){
