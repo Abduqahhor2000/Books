@@ -25,7 +25,8 @@ function App() {
   const token = authDetails.token;
 
   useEffect(()=>{
-    
+    localStorage.getItem('token', data.token);
+    localStorage.setItem('user', JSON.stringify(data.user));
   }, []);
 
 
