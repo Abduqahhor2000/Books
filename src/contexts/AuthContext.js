@@ -1,10 +1,12 @@
 import { createContext } from "react";
 
-const AuthContext = createContext({
+export const initailState = {
     user: {},
     token: "",
     isLoggen: false,
     setAuthDetails: () => {}
-})
+};
+
+const AuthContext = createContext(initailState);
 
 export default AuthContext;

@@ -1,5 +1,5 @@
 import KatalogAuthor from "./KatalogAuthor";
-import KatalogBooks from "./KatalogBooks";
+// import KatalogBooks from "./KatalogBooks";
 
 export default function Main() {
     return(

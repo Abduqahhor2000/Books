@@ -1,12 +1,12 @@
-import book from "../img/book.jpg";
+import author from "../img/author.jpg";
 import {Form} from 'react-bootstrap';
 
-export default function Book () {
+export default function AddAuthor () {
     return(
         <div className="signUp">
             <div className="book-img">
                 <div className="book-center" style={{marginBottom: "20px"}}>
-                    <img src={book}></img>  
+                    <img src={author} alt="" /> 
                 </div>
                 <div className="book-upload">
                     <h2 style={{margin: "0 0 20px 0", width: "300px", padding: "10px 10px"}}>Ulug'bek xazinasi</h2>
@@ -15,7 +15,7 @@ export default function Book () {
             </div>
             <div className="signUp-form">
                 <div className="form-center">
-                    <h1 style={{marginBottom: "20px"}}>Add book</h1>
+                    <h1 style={{marginBottom: "20px"}}>Add author</h1>
                     <Form>
                         <Form.Group className="form-group" controlId="formGroupEmail">
                             <Form.Control type="text" placeholder="Title" />

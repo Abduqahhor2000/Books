@@ -34,12 +34,11 @@ export default function SignIn() {
           }
     }
 
-
     return(
         <div className="signUp">
             <div className="signUp-img">
                 <div className="img-center">
-                    <img src={signIn}></img>  
+                    <img src={signIn} alt=""></img>  
                 </div>
             </div>
             <div className="signUp-form">
