@@ -1,17 +1,17 @@
 import { useContext } from "react";
-import AuthContext, {initailState} from "../contexts/AuthContext";
+import GlobalContext, {initailState} from "../contexts/GlobalContext";
 import userImg from "../img/userImg.png";
 import {Link} from "react-router-dom";
 
 export default function Navbar(){
-    const context = useContext(AuthContext);
+    const context = useContext(GlobalContext);
 
     const SignOutHendler = () => {
         localStorage.clear();
-        context.contextValue.setAuthDetails(initailState);
+        context.setAuthDetails(initailState);
     }
 
-    console.log(context.contextValue.token);
+    console.log(context.token);
     return(
         <div className="header-home">
             <div className="brand-home">
@@ -26,10 +26,10 @@ export default function Navbar(){
                   <li>Forum</li>
                 </ul>
                 {
-                   (context.contextValue.token) ? <div className="user-img">
+                   (context.token) ? <div className="user-img">
                                         <div className="SignOut">
-                                            <button onClick={SignOutHendler} className="SignOutBtn">Sign Out</button>
-                                            <span>{context.contextValue.user.firstName} {context.contextValue.user.lastName}</span>
+                                            <a href="#" onClick={SignOutHendler} className="SignOutBtn">Sign Out</a>
+                                            <span>{context.user.firstName} {context.user.lastName}</span>
                                         </div>
                                         <img src={userImg} alt=""></img>
                                      </div>

@@ -6,7 +6,7 @@ import SignIn from "./Component/SignIn";
 import SignUp from "./Component/SignUp";
 import Home from "./Component/Home";
 import Author from "./Component/Author";
-import { Route, Switch, BrowserRouter as Router, useLocation, Redirect } from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import AuthContext from "./contexts/AuthContext";
 import GlobalContext from "./contexts/GlobalContext";
 
@@ -25,7 +25,6 @@ import GlobalContext from "./contexts/GlobalContext";
 function App () {
     const [authDetails, setAuthDetails] = useState(initailState);
     // const token = authDetails.token;
-    // const location = useLocation();
 
     useEffect(()=>{
         const user  = JSON.parse(localStorage.user || '{}');
@@ -44,27 +43,22 @@ function App () {
         user: authDetails.user,
         setAuthDetails
     }
-
-    // const canRedirectToHome = location.pathname === '/sign-in' || location.pathname === '/sign-up';
       
     return(
      <>
         <GlobalContext.Provider value={contextValue}>
-        <AuthContext.Provider value={{ setAuthDetails }}>
-            {
-              canRedirectToHome ? <Redirect from={["/sign-in", '/sign-up']} to="/" /> : null
-            }
+          <AuthContext.Provider value={{ setAuthDetails }}>
             <Router>
-             <Switch>       
+              <Switch>       
                 <Route component={Home} exact path={["/", '/books', '/products']} />
                 <Route component={SignIn} exact path="/sign-in" />
                 <Route component={SignUp} exact path="/sign-up" />
                 <Route component={Author} exact path="/author" />
                 <Route component={AddAuthor} exact path="/add-author" />
                 <Route component={AddBook} exact path="/add-book" />
-             </Switch>
-          </Router>
-        </AuthContext.Provider>
+              </Switch>
+            </Router>
+          </AuthContext.Provider>
         </GlobalContext.Provider>
      </>
     )

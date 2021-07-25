@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import { useCallback, useContext, useState } from "react";
 import Axios from "../utils/axios";
 import AuthContext from "../contexts/AuthContext";
+import InputErrorMessage from "./InputErrorMessage";
 
 export default function SignUp() {
     const context = useContext(AuthContext);
+    const [errorObj, setErrorObj] = useState({type: "", msg: ""});
     const [state, setState] = useState({
         firstName: "",
         lastName: "",
@@ -17,18 +19,38 @@ export default function SignUp() {
     
     const onClickForm = async (e) => {
         e.preventDefault();
+        console.log("shu yerdaman");
         try {
-            const { data } = await Axios.post('/sign-up', state);
-            if (!data.success) {
-              return console.log(data.msg);
-            }
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('user', JSON.stringify(data.user));
-            context.setAuthDetails(data);
+            const { data } = await Axios.post('/sign-up', state); 
+            if (data.success) { 
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                context.setAuthDetails(data);
+            } else{
+                const msg = hendlerErrorObject(data?.msg);
+                setErrorObj(msg);
+            }  
           }
-          catch (err) {
+        catch (err) {
             console.log(err.response);
+            const msg = hendlerErrorObject(err.response?.data?.msg);
+            setErrorObj(msg);
           }
+    }
+
+    const hendlerErrorObject = (errorMsg = "") => {
+            if(errorMsg.includes("E11000")){
+                return {
+                    type: 'email',
+                    message: 'This user exist. Choose another email!'
+                }
+            }
+
+            const errorType = errorMsg.slice(errorMsg.indexOf('"'), errorMsg.lastIndexOf('"'));
+            return {
+                type: errorType.replace('\"', '').replace('\\',''),
+                message: errorMsg
+            }
     }
 
     const inputChangeHendler = useCallback(e => {
@@ -49,6 +71,7 @@ export default function SignUp() {
                     <p>Already have an account? <Link to="/sign-in">Sign in</Link></p>
                     <Form onSubmit={onClickForm}>
                         <Form.Group className="form-group" controlId="formGroupFirstName" >
+                            <InputErrorMessage type="firstName" errorObj={errorObj} />
                             <Form.Control
                                 type="text"
                                 name="firstName"
@@ -58,6 +81,7 @@ export default function SignUp() {
                             />
                         </Form.Group>
                         <Form.Group className="form-group" controlId="formGroupLastName">
+                            <InputErrorMessage  type="lastName" errorObj={errorObj} />
                             <Form.Control
                                 type="text"
                                 name="lastName"
@@ -67,6 +91,7 @@ export default function SignUp() {
                             />
                         </Form.Group>
                         <Form.Group className="form-group" controlId="formGroupPhoneNumber">   
+                            <InputErrorMessage type="phone" errorObj={errorObj} />
                             <Form.Control 
                                 type="text" 
                                 name="phone"
@@ -76,6 +101,7 @@ export default function SignUp() {
                             />
                         </Form.Group>
                         <Form.Group className="form-group" controlId="formGroupEmail">
+                            <InputErrorMessage type="email"  errorObj={errorObj} />
                             <Form.Control
                                 type="email"
                                 name="email"
@@ -85,6 +111,7 @@ export default function SignUp() {
                             />
                         </Form.Group>
                         <Form.Group className="form-group" controlId="formGroupPassword">   
+                            <InputErrorMessage type="password" errorObj={errorObj} />
                             <Form.Control 
                                 type="password"
                                 name="password"

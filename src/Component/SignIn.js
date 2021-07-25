@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import AuthContext from "../contexts/AuthContext"
 import { useCallback, useContext, useState } from "react";
 import Axios from "../utils/axios";
+import { useHistory } from "react-router";
 
 export default function SignIn() {
     const context = useContext(AuthContext);
+    const history = useHistory(null);
     const [state, setState] = useState({
         email: 'aka@mail.ru',
         password: '123456'
@@ -28,6 +30,7 @@ export default function SignIn() {
             localStorage.setItem('token', data.token);
             localStorage.setItem('user', JSON.stringify(data.user));
             context.setAuthDetails(data);
+            history.push("/");
           }
           catch (err) {
             console.log(err.response);
