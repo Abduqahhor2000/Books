@@ -1,17 +1,20 @@
 import { useContext } from "react";
-import GlobalContext, {initailState} from "../contexts/GlobalContext";
 import userImg from "../img/userImg.png";
 import {Link} from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {clearUserAction} from "../store/actions/userAction";
 
 export default function Navbar(){
-    const context = useContext(GlobalContext);
+    const user = useSelector(state => state.user);
+    const token = useSelector(state => state.token);
+    const dispatch = useDispatch();
 
     const SignOutHendler = () => {
         localStorage.clear();
-        context.setAuthDetails(initailState);
+        dispatch(clearUserAction());
     }
 
-    console.log(context.token);
+    console.log(token);
     return(
         <div className="header-home">
             <div className="brand-home">
@@ -26,10 +29,10 @@ export default function Navbar(){
                   <li>Forum</li>
                 </ul>
                 {
-                   (context.token) ? <div className="user-img">
+                   (token) ? <div className="user-img">
                                         <div className="SignOut">
                                             <a href="#" onClick={SignOutHendler} className="SignOutBtn">Sign Out</a>
-                                            <span>{context.user.firstName} {context.user.lastName}</span>
+                                            <span>{user.firstName} {user.lastName}</span>
                                         </div>
                                         <img src={userImg} alt=""></img>
                                      </div>

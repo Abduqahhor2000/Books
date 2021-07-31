@@ -1,16 +1,17 @@
 import signUp from "../img/signup.png";
 import {Form} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useState } from "react";
 import Axios from "../utils/axios";
-import AuthContext from "../contexts/AuthContext";
 import InputErrorMessage from "./InputErrorMessage";
 import { useHistory } from "react-router";
+import {signUpAction} from "../store/actions/authAction";
+import { useDispatch } from "react-redux";
 
 export default function SignUp() {
-    const context = useContext(AuthContext);
     const [errorObj, setErrorObj] = useState({type: "", msg: ""});
     const history = useHistory(null);
+    const dispatch = useDispatch
     const [state, setState] = useState({
         firstName: "",
         lastName: "",
@@ -27,7 +28,7 @@ export default function SignUp() {
             if (data.success) { 
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('user', JSON.stringify(data.user));
-                context.setAuthDetails(data);
+                dispatch(signUpAction(data));
                 history.push("/");
             } else{
                 const msg = hendlerErrorObject(data?.msg);

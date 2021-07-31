@@ -1,13 +1,14 @@
 import signIn from "../img/signin.png";
 import {Form} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import AuthContext from "../contexts/AuthContext"
 import { useCallback, useContext, useState } from "react";
 import Axios from "../utils/axios";
 import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import {updateUserAction} from "../store/actions/userAction";
 
 export default function SignIn() {
-    const context = useContext(AuthContext);
+    const dispatch = useDispatch();
     const history = useHistory(null);
     const [state, setState] = useState({
         email: 'aka@mail.ru',
@@ -27,9 +28,10 @@ export default function SignIn() {
             if (!data.success) {
               return console.log(data.msg);
             }
+            const {user, token} = data;
             localStorage.setItem('token', data.token);
             localStorage.setItem('user', JSON.stringify(data.user));
-            context.setAuthDetails(data);
+            dispatch(updateUserAction({user, token}));
             history.push("/");
           }
           catch (err) {
