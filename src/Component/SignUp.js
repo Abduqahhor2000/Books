@@ -5,10 +5,12 @@ import { useCallback, useContext, useState } from "react";
 import Axios from "../utils/axios";
 import AuthContext from "../contexts/AuthContext";
 import InputErrorMessage from "./InputErrorMessage";
+import { useHistory } from "react-router";
 
 export default function SignUp() {
     const context = useContext(AuthContext);
     const [errorObj, setErrorObj] = useState({type: "", msg: ""});
+    const history = useHistory(null);
     const [state, setState] = useState({
         firstName: "",
         lastName: "",
@@ -26,10 +28,12 @@ export default function SignUp() {
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('user', JSON.stringify(data.user));
                 context.setAuthDetails(data);
+                history.push("/");
             } else{
                 const msg = hendlerErrorObject(data?.msg);
                 setErrorObj(msg);
             }  
+            console.log(data);
           }
         catch (err) {
             console.log(err.response);
@@ -48,7 +52,7 @@ export default function SignUp() {
 
             const errorType = errorMsg.slice(errorMsg.indexOf('"'), errorMsg.lastIndexOf('"'));
             return {
-                type: errorType.replace('\"', '').replace('\\',''),
+                type: errorType.replace(`\"`, '').replace('\\',''),
                 message: errorMsg
             }
     }

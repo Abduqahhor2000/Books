@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import App from "./App";
+import App from "./App";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./index.css";
 import store from './App/store';
 import { Provider } from "react-redux";
-import Counter from "./features/counter/Counter"
+// import Counter from "./features/counter/Counter"
 
 ReactDOM.render(
     <Provider store={store}>
-        <Counter /> 
+        <App /> 
     </Provider>,
    document.getElementById('root')
 );
