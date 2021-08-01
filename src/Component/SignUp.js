@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 export default function SignUp() {
     const [errorObj, setErrorObj] = useState({type: "", msg: ""});
     const history = useHistory(null);
-    const dispatch = useDispatch
+    const dispatch = useDispatch();
     const [state, setState] = useState({
         firstName: "",
         lastName: "",
@@ -22,7 +22,7 @@ export default function SignUp() {
     
     const onClickForm = async (e) => {
         e.preventDefault();
-        console.log("shu yerdaman");
+        console.log(state);
         try {
             const { data } = await Axios.post('/sign-up', state); 
             if (data.success) { 
@@ -37,7 +37,7 @@ export default function SignUp() {
             console.log(data);
           }
         catch (err) {
-            console.log(err.response);
+            console.log(err);
             const msg = hendlerErrorObject(err.response?.data?.msg);
             setErrorObj(msg);
           }

@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import userImg from "../img/userImg.png";
 import {Link} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {clearUserAction} from "../store/actions/userAction";
 
 export default function Navbar(){
-    const user = useSelector(state => state.user);
-    const token = useSelector(state => state.token);
+    const user = useSelector(state => state.user.user);
+    const token = useSelector(state => state.user.token);
     const dispatch = useDispatch();
 
     const SignOutHendler = () => {

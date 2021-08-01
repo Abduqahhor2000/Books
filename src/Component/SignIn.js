@@ -1,7 +1,7 @@
 import signIn from "../img/signin.png";
 import {Form} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useCallback, useContext, useState } from "react";
+import { useCallback, useState } from "react";
 import Axios from "../utils/axios";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
@@ -24,6 +24,7 @@ export default function SignIn() {
     const onClickForm = async (e) => {
         e.preventDefault();
         try {
+            console.log(state);
             const { data } = await Axios.post('/login', state);
             if (!data.success) {
               return console.log(data.msg);
@@ -35,7 +36,7 @@ export default function SignIn() {
             history.push("/");
           }
           catch (err) {
-            console.log(err.response);
+            console.log(err);
           }
     }
 
