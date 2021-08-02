@@ -2,7 +2,7 @@ import * as actionType from "../actionTypes";
 
 export const updateLangAction = (lang) => {
     return {
-        lang,
+        payload: lang,
         type: actionType.UPDATE_LANGUAGE
     }
 }

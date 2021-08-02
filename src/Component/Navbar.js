@@ -1,16 +1,21 @@
 import userImg from "../img/userImg.png";
 import {Link} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import {clearUserAction} from "../store/actions/userAction";
+import {clearUserAction, updateLangAction} from "../store/actions/userAction";
 
 export default function Navbar(){
     const user = useSelector(state => state.user.user);
     const token = useSelector(state => state.user.token);
     const dispatch = useDispatch();
+    console.log(user);
 
     const SignOutHendler = () => {
         localStorage.clear();
         dispatch(clearUserAction());
+    }
+
+    const onChangeLangHendler = (lang) => {
+        dispatch(updateLangAction(lang));
     }
 
     console.log(token);
@@ -27,6 +32,15 @@ export default function Navbar(){
                   <li>Maqolalar</li>
                   <li>Forum</li>
                 </ul>
+                <div>
+                    <select onChange={(e) => onChangeLangHendler(e.target.value)} value={user?.lang}>
+                        <option value="uz">uz</option>
+                        <option value="en">en</option>
+                        <option value="ru">ru</option>
+                        <option value="fr">fr</option>
+                        <option value="gr">gr</option>
+                    </select>
+                </div>
                 {
                    (token) ? <div className="user-img">
                                         <div className="SignOut">

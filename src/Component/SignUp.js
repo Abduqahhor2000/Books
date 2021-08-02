@@ -26,8 +26,8 @@ export default function SignUp() {
         try {
             const { data } = await Axios.post('/sign-up', state); 
             if (data.success) { 
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('user', JSON.stringify(data.user));
+                // localStorage.setItem('token', data.token);
+                // localStorage.setItem('user', JSON.stringify(data.user));
                 dispatch(signUpAction(data));
                 history.push("/");
             } else{
