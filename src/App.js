@@ -15,9 +15,7 @@ function App () {
   const dispatch = useDispatch();
 
     useEffect(()=>{
-        const user  = JSON.parse(localStorage.user || '{}');
-        const token = localStorage.getItem('token');
-        dispatch(updateUserAction({token, user}));
+        dispatch(updateUserAction());
     }, []);
     
     return(

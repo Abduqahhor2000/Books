@@ -10,10 +10,14 @@ const userReducer = (state = initialState, action) => {
     
 
     switch(action.type) {
-        case actionTypes.UPDATE_USER:
+        case actionTypes.UPDATE_USER:{
+            return{
+                ...state
+            }
+        }
         case actionTypes.OUTH_SIGN_UP:{
             return{
-                ...state, token, user
+                ...action?.payload
             }
         }
         case actionTypes.UPDATE_LANGUAGE:{

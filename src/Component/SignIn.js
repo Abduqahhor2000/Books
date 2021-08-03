@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
 import Axios from "../utils/axios";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
-import {updateUserAction} from "../store/actions/userAction";
+import {signUpAction} from "../store/actions/authAction";
 
 export default function SignIn() {
     const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export default function SignIn() {
 
     const formSubmitHendler = useCallback(e => {
         const {name, value} = e.target;
-        setState(prevState => ({ ...state, [name]: value })); 
+        setState(() => ({ ...state, [name]: value })); 
     }, [state]);
 
     
@@ -29,10 +29,9 @@ export default function SignIn() {
             if (!data.success) {
               return console.log(data.msg);
             }
-            const {user, token} = data;
-            localStorage.setItem('token', data.token);
-            localStorage.setItem('user', JSON.stringify(data.user));
-            dispatch(updateUserAction({user, token}));
+            // localStorage.setItem('token', data.token);
+            // localStorage.setItem('user', JSON.stringify(data.user));
+            dispatch(signUpAction(data));
             history.push("/");
           }
           catch (err) {

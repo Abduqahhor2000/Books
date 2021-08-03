@@ -6,9 +6,8 @@ export const updateLangAction = (lang) => {
         type: actionType.UPDATE_LANGUAGE
     }
 }
-export const updateUserAction = ({token, user}) => {
+export const updateUserAction = () => {
     return {
-        payload: {token, user},
         type: actionType.UPDATE_USER
     }
 }
