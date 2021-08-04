@@ -1,4 +1,5 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"
 import userReducer from "./reducers/userReducer";
@@ -14,7 +15,7 @@ const rootReducer = combineReducers({
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-const store = createStore(persistedReducer, applyMiddleware(logger));
+const store = createStore(persistedReducer, composeWithDevTools(applyMiddleware(logger)));
 
 export const persistor = persistStore(store);
 export default store;
