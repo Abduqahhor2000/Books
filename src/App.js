@@ -11,7 +11,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateUserAction } from "./store/actions/userAction";
 
 function App () {
-  const store = useSelector(state => state.user.user);
   const dispatch = useDispatch();
 
     useEffect(()=>{
