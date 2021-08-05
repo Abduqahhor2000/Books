@@ -6,8 +6,6 @@ const initialState = {
 }
 
 const userReducer = (state = initialState, action) => {
-    const {token, user} = {...action?.payload};
-    
 
     switch(action.type) {
         case actionTypes.UPDATE_USER:{
